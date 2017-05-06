@@ -3,9 +3,9 @@ import java.util.List;
 
 public class nQueens {
 	private final static int POPULATION_SIZE = 100;
-	final static int CHROMOSOME_SIZE = 100;
+	final static int CHROMOSOME_SIZE = 50;
 	// A chromosome contains a queen's row for each subsequent column
-	private final static int FITNESS_GOAL = CHROMOSOME_SIZE * CHROMOSOME_SIZE;
+	private final static int FITNESS_GOAL = (CHROMOSOME_SIZE - 1) * CHROMOSOME_SIZE;
 	private final static int NUM_GENERATIONS = 1000;
 	private final static double MUTATION_PROB = 0.01;
 
@@ -105,7 +105,6 @@ public class nQueens {
 
 	private static List<Chromosome> selection() {
 		List<Chromosome> selectedChromosomes = new ArrayList<Chromosome>(POPULATION_SIZE);
-		int t1, t2 = 0, t3 = 0;
 		for (int i = 0; i < POPULATION_SIZE; i++) {
 			int sum = 0;
 			int r = (int) (Math.random() * totalFitness) + 1;
@@ -119,11 +118,8 @@ public class nQueens {
 			if (sum < r) {
 				selectedChromosomes.add(population.get(POPULATION_SIZE - 1));
 			}
-			t2 = sum;
-			t3 = r;
 		}
 		if (selectedChromosomes.size() < POPULATION_SIZE) {
-			t1 = totalFitness;
 			System.out.println(selectedChromosomes.size());
 		}
 		return selectedChromosomes;
