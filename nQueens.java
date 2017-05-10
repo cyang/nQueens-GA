@@ -3,7 +3,7 @@ import java.util.List;
 
 public class nQueens {
 	private final static int POPULATION_SIZE = 100;
-	final static int CHROMOSOME_SIZE = 50;
+	final static int CHROMOSOME_SIZE = 100;
 	// A chromosome contains a queen's row for each subsequent column
 	private final static int FITNESS_GOAL = (CHROMOSOME_SIZE - 1) * CHROMOSOME_SIZE;
 	private final static int NUM_GENERATIONS = 1000;
@@ -118,9 +118,6 @@ public class nQueens {
 			if (sum < r) {
 				selectedChromosomes.add(population.get(POPULATION_SIZE - 1));
 			}
-		}
-		if (selectedChromosomes.size() < POPULATION_SIZE) {
-			System.out.println(selectedChromosomes.size());
 		}
 		return selectedChromosomes;
 	}
